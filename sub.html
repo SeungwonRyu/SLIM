@@ -8,8 +8,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <style>
-        div.row > div.col {
-            height: 250px;
+        body{
+            -ms-overflow-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        .row-size-1 {
+            height: 300px;
+        }
+
+        .row-size-2, .row-size-3 {
+            height: 400px;
         }
     </style>
 
@@ -17,34 +29,90 @@
 </head>
 <body class="pt-5">
     <!-- 네비 바 영역 -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">SLIM</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">MENU &nbsp</li>
-                    <li class="nav-item">MENU &nbsp</li>
-                    <li class="nav-item">MENU &nbsp</li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand">R&D 소프트웨어 사용현황</a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 
     <!-- 메인 섹션 -->
-    <div class="container">
+    <div class="container-fluid" style="margin-top:20px; margin-bottom: 30px;">
         <div class="row">
-            <div class="col bg-secondary">dd</div>
-            <div class="col bg-secondary" style="margin-left:10px;">dd</div>
-            <div class="col bg-secondary" style="margin-left:10px">dd</div>
+        <div class="col-1">
+            <h1>SLIM</h1>
+            <ul>
+                <li><a href="#">대시보드</a></li>
+                <li>사용현황</li>
+                <li>투자검토</li>
+                <li>환경설정</li>
+            </ul>
         </div>
-        <div class="row" style="margin-top:10px;">
-            <div class="col bg-secondary">dd</div>
+        <div class="col-10" style="margin-top: 30px; margin-left: 80px;">
+            <div class="row row-size-1">
+                <div class="col bg-secondary">
+                    <h3>사용률 Top 1</h3>
+                    <canvas id="chart-1"></canvas>
+
+                    <script>
+                        new Chart(document.getElementById("chart-1"), {
+                            axis: 'y',
+                            type: 'line',
+                            data: {
+                                labels: ['1주전', '2주전', '3주전', '4주전', '5주전'],
+                                datasets: [
+                                    {
+                                        label: '3DCS',
+                                        data: [82, 60, 68, 76, 74, 68],
+                                        backgroundColor: 'rgb(0, 0, 102)'
+                                    },
+                                    {
+                                        label: 'Average',
+                                        data: [78, 55, 62, 76, 78, 64],
+                                        backgroundColor: 'rgb(251, 61, 109)'
+                                    }
+                                ]
+                            },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Using Chart'
+                                },
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                pontHitRadius: 50,
+
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        })
+                    </script>
+                </div>
+                <div class="col bg-secondary" style="margin-left:10px;">dd</div>
+                <div class="col bg-secondary" style="margin-left:10px">dd</div>
+            </div>
+            <div class="row row-size-2" style="margin-top:10px;">
+                <div class="col bg-secondary">dd</div>
+            </div>
+            <div class="row row-size-3" style="margin-top:10px;">
+                <div class="col bg-secondary">dd</div>
+                <div class="col bg-secondary" style="margin-left:10px;">dd</div>
+            </div>
         </div>
-        <div class="row" style="margin-top:10px;">
-            <div class="col bg-secondary">dd</div>
-            <div class="col bg-secondary" style="margin-left:10px;">dd</div>
         </div>
     </div>
-    </div>
+
+    <div></div>
 </body>
 </html>
