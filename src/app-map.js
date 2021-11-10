@@ -8,7 +8,7 @@ document.readyState === 'complete' ? init() : window.onload = init;
 //
 function init() {
     let map = new FlexMap('#map', {
-        header: 'Airport Map',
+        header: 'Server Map',
         tooltip: { content: '&#9992; <b>{iata_code}</b><br>{name}' },
         layers: [
             new GeoMapLayer({

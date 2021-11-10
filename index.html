@@ -17,7 +17,10 @@
         System.import('./src/app-chart-2');
         System.import('./src/app-chart-3');
         System.import('./src/app-chart-4');
+        System.import('./src/app-chart-5');
+        System.import('./src/app-chart-6');
         System.import('./src/app-map');
+        System.import('./src/app-grid');
     </script>
 
     <!-- font -->
@@ -30,17 +33,31 @@
             font-family: 'Nanum Gothic', sans-serif;
         }
 
-        a:link, a:hover, a:visited {
-            color: black;
+        a:link, a:visited, a:hover {
+            color: white;
             text-decoration: none;
         }
 
-        body{
+        img {
+            filter: invert(100%);
+        }
+
+        body {
             -ms-overflow-style: none;
         }
 
         ::-webkit-scrollbar {
-            display: none;
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #eeeeee;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#55b2c0, #12182B);
+            border-radius: 5px;
         }
 
         /* 메뉴 섹션 */
@@ -50,13 +67,19 @@
             height: 100vh;
         }
 
-        li {
-            font-size: medium;
+        .side-menu {
+            height: 80px;
+        }
+
+        .side-menu > img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
         }
 
         /* 메인 섹션 */
         #chart-1, #chart-2, #chart-3, #chart-4 {
-            width: 395px;
+            width: 394px;
             height: 250px;
         }
 
@@ -64,9 +87,23 @@
             margin-left: 10px;
         }
 
+        #chart-5, #chart-6 {
+            width: 798px;
+            height: 350px;
+        }
+
+        #chart-6 {
+            margin-left: 10px;
+        }
+
         #map {
             height: 500px;
+        }
 
+        .grid-div {
+            width: 1060px;
+            height: 500px;
+            margin-left: 10px;
         }
     </style>
 
@@ -78,31 +115,37 @@
         <div class="row">
 
         <!-- 측면 메뉴 -->
-        <div class="col-1 bg-dark text-white fixed-top">
-            <h2>Doctorsoft</h2>
-            <h4>유승원</h4>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item bg-dark"><a href="#">
-                    <br><img src="img/dashboard.png" style="width: 30px; height: 30px;"/>&nbsp;
-                    대시보드
-                </a></li>
-                <li class="list-group-item"><a href="#">
-                    <br><img src="img/report.png" style="width: 30px; height: 30px;"/>&nbsp;
-                    사용현황
-                </a></li>
-                <li class="list-group-item"><a href="#">
-                    <br><img src="img/review.png" style="width: 30px; height: 30px;"/>&nbsp;
-                    투자검토
-                </a></li>
-                <li class="list-group-item"><a href="#">
-                    <br><img src="img/setting.png" style="width: 30px; height: 30px;"/>&nbsp;
-                    환경설정
-                </a></li>
-            </ul>
+        <div class="col-1 text-white fixed-top" style="background: linear-gradient(#12182B, #55b2c0);">
+            <div class="row">
+                <div class="col">
+                    <h2>&nbsp; Doctorsoft</h2>
+                    <h4>&nbsp;&nbsp; 유승원</h4><br>
+                </div><hr>
+            </div>
+            <div class="row">
+                <a href="#"><div class="col side-menu">
+                    <img src="img/dashboard.png"/> &nbsp; 대시보드
+                </div></a>
+            </div>
+            <div class="row">
+                <div class="col side-menu">
+                    <img src="img/report.png"/> &nbsp; 사용현황
+                </div>
+            </div>
+            <div class="row">
+                <div class="col side-menu">
+                    <img src="img/review.png"/> &nbsp; 투자검토
+                </div>
+            </div>
+            <div class="row">
+                <div class="col side-menu">
+                    <img src="img/setting.png"/> &nbsp; 환경설정
+                </div>
+            </div>
         </div>
 
         <!-- 메인 대시보드 -->
-        <div class="col-10" style="margin-left: 250px;">
+        <div class="col-10" style="margin-left: 250px; margin-top: 100px;">
             <!-- 헤더 -->
             <div class="row">
                 <div class="col"></div>
@@ -110,24 +153,31 @@
 
             <!-- 상단 -->
             <div class="row">
-                <div class="col-3 bg-white shadow" id="chart-1"></div>
-                <div class="col-3 bg-white shadow" id="chart-2"></div>
-                <div class="col-3 bg-white shadow" id="chart-3"></div>
-                <div class="col-3 bg-white shadow" id="chart-4"></div>
+                <div class="col-3 bg-white shadow rounded-3" id="chart-1"></div>
+                <div class="col-3 bg-white shadow rounded-3" id="chart-2"></div>
+                <div class="col-3 bg-white shadow rounded-3" id="chart-3"></div>
+                <div class="col-3 bg-white shadow rounded-3" id="chart-4"></div>
             </div>
 
             <!-- 중단 -->
             <div class="row">
-                <div class="col-4 bg-white shadow" id="map"></div>
-                <div class="col-8">
+                <div class="col-4 bg-white shadow rounded-3" id="map"></div>
+                <div class="col-8 bg-white shadow grid-div rounded-3">
+                    <div class="input-group" style="margin-top: 5px;">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+                        <input id="filter" class="form-control" placeholder="제품명 검색">
+                    </div>
+                    <div id="grid"></div>
                 </div>
             </div>
 
             <!-- 하단 -->
             <div class="row">
-                <div class="col bg-white shadow"></div>
+                <div class="col-6 bg-white shadow rounded-3" id="chart-5"></div>
+                <div class="col-6 bg-white shadow rounded-3" id="chart-6"></div>
             </div>
 
+            <div class="row" style="margin-top: 50px;"><hr></div>
         </div>
     </div>
     </div>

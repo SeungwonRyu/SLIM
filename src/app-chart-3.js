@@ -10,6 +10,7 @@ function init() {
     // create the chart
     let theChart = new wjChart.FlexChart('#chart-3', {
         header: '서버 상태',
+        palette: ['#ff9001'],
         chartType: wjChart.ChartType.Line,
         bindingX: 'x',
         series: [{
