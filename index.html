@@ -73,23 +73,16 @@
     <title>Dashboard</title>
 </head>
 <body class="bg-light">
-    <!-- 네비 바 영역 -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">R&D 소프트웨어 사용현황</a>
-        </div>
-    </nav>
-
     <!-- 메인 섹션 -->
     <div class="container-fluid">
         <div class="row">
 
         <!-- 측면 메뉴 -->
-        <div class="col-1 side-menu">
+        <div class="col-1 bg-dark text-white fixed-top">
             <h2>Doctorsoft</h2>
             <h4>유승원</h4>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="#">
+                <li class="list-group-item bg-dark"><a href="#">
                     <br><img src="img/dashboard.png" style="width: 30px; height: 30px;"/>&nbsp;
                     대시보드
                 </a></li>
@@ -109,7 +102,12 @@
         </div>
 
         <!-- 메인 대시보드 -->
-        <div class="col-10" style="margin-left: 50px;">
+        <div class="col-10" style="margin-left: 250px;">
+            <!-- 헤더 -->
+            <div class="row">
+                <div class="col"></div>
+            </div>
+
             <!-- 상단 -->
             <div class="row">
                 <div class="col-3 bg-white shadow" id="chart-1"></div>
@@ -118,14 +116,17 @@
                 <div class="col-3 bg-white shadow" id="chart-4"></div>
             </div>
 
-            <!-- 하단 -->
+            <!-- 중단 -->
             <div class="row">
                 <div class="col-4 bg-white shadow" id="map"></div>
                 <div class="col-8">
-                    <div
                 </div>
             </div>
 
+            <!-- 하단 -->
+            <div class="row">
+                <div class="col bg-white shadow"></div>
+            </div>
 
         </div>
     </div>
