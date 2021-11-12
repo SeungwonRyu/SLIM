@@ -96,3 +96,47 @@ export function getSixthData() {
     ];
 }
 
+// 일별 페이지 1번째 차트 데이터 (영역 차트)
+export function getSubFirstData(cnt) {
+    let arr = [], y = [-5.2, -3.4, 1.7, 8.8, 14.6, 19.6, 22.1, 21.2, 16.6, 9.8, 4.3, -1.9, -2.8, -3.6];
+    // y length == 14
+    for (let i=0, j=0; i < cnt; i++, j++) {
+        arr.push({ x: i, y: y[j] });
+
+        if(i >= y.length || i%y.length == 0) {
+            j = 0;
+        }
+    }
+    return arr;
+}
+
+// 일별 페이지 2번째 차트 데이터 (도넛 차트)
+export function getSubSecondData() {
+    return [
+        { brand: 'Samsung', sales: 321 },
+        { brand: 'Apple', sales: 215 },
+        { brand: 'Huawei', sales: 160 },
+        { brand: 'OPPO', sales: 112 },
+        { brand: 'Vivo', sales: 100 },
+        { brand: 'Others', sales: 638 }
+    ];
+}
+
+// 일별 페이지 3번째 차트 데이터 (막대 차트)
+// list of country GDP
+// https://en.wikipedia.org/wiki/List_of_IMF_ranked_countries_by_GDP
+export function getSubThirdData() {
+    return [
+        { country: 'United States', '2014': 17348, '2015': 18036, '2016': 18624 },
+        { country: 'China', '2014': 10356, '2015': 11181, '2016': 11232 },
+        { country: 'Japan', '2014': 4602, '2015': 4124, '2016': 4936 },
+        { country: 'Germany', '2014': 3874, '2015': 3365, '2016': 3479 },
+        { country: 'United Kingdom', '2014': 2950, '2015': 2858, '2016': 2629 },
+        { country: 'France', '2014': 2833, '2015': 2420, '2016': 2466 }
+    ];
+}
+
+
+
+
+

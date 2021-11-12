@@ -13,11 +13,12 @@ function init() {
         data.push({
             '#': i+1,
             제품명: countries[i % countries.length],
-            AA: Math.round(Math.random() * 20000),
-            BB: Math.round(Math.random() * 10000),
-            CC: Math.round(Math.random() * 5000),
-            DD: Math.random() * 8000,
-            EE: Math.random() * 3000
+            Alpha: Math.round(Math.random() * 20000),
+            Bravo: Math.round(Math.random() * 10000),
+            Charlie: Math.round(Math.random() * 5000),
+            Delta: Math.random() * 8000,
+            Echo: Math.random() * 3000,
+            Foxtrot: Math.round(Math.random() * 5000)
         });
     }
     //

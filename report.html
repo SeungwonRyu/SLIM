@@ -14,9 +14,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- SystemJS -->
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('./src/app-chart-sub-1');
+        System.import('./src/app-chart-sub-2');
+        System.import('./src/app-chart-sub-3');
+        System.import('./src/app-grid-sub-1');
+    </script>
+
     <style>
         * {
             font-family: 'Nanum Gothic', sans-serif;
+        }
+
+        a:link, a:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #eeeeee;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#55b2c0, #12182B);
+            border-radius: 5px;
         }
 
         /* 메뉴 섹션 */
@@ -26,55 +62,144 @@
             height: 100vh;
         }
 
-        .side-menu {
-            height: 80px;
-        }
-
-        .side-menu > img {
+        .menu-title > a > img {
+            filter: invert(100%);
             width: 40px;
             height: 40px;
             margin-left: 10px;
+        }
+
+        .menu-title > img {
+            filter: invert(100%);
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        /* 아코디언 메뉴 */
+        /* .menu-title:first-child{
+            border-top: 1px solid black;
+        } */
+
+        .menu-title{
+            position: relative;
+            padding: 17px 0;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .menu-title::before{
+            display: inline-block;
+            font-size: 14px;
+            color: gray;
+            margin-right: 5px;
+        }
+
+        .menu-title.on>span{
+            font-weight: bold;
+            color: gray;
+        }
+
+        .menu-sub {
+            display: none;
+            overflow: hidden;
+            font-size: 14px;
+            padding: 27px 0;
+        }
+
+        .menu-sub::before {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* 메인 섹션 */
+        #grid-sub-1 {
+            margin-top: 10px;
+            height: 490px;
+        }
+
+        #grid-sub-1, #mr-aggregates {
+            width: 1000px;
+        }
+
+        .right-side {
+            margin-left: 20px;
+            margin-right: 55px;
+        }
+
+        .row > .col > button {
+            margin-bottom: 10px;
+        }
+
+        #chart-sub-2, #chart-sub-3 {
+            height: 295px;
         }
     </style>
 
     <title>Sub</title>
 </head>
-<body>
+<body class="bg-light">
 <div class="container-fluid"><div class="row">
 
     <!-- 측면 메뉴 바 -->
     <div class="col-1 text-white fixed-top" style="background: linear-gradient(#12182B, #55b2c0);">
         <div class="row">
             <div class="col">
-                <h2>&nbsp; Doctorsoft</h2>
-                <h4>&nbsp;&nbsp; 유승원</h4><br>
+                <h2>Doctorsoft</h2>
+                <h4>유승원</h4><br>
             </div><hr>
         </div>
         <div class="row">
-            <a href="#"><div class="col side-menu">
-                <img src="img/dashboard.png"/> &nbsp; 대시보드
-            </div></a>
-        </div>
-        <div class="row">
-            <div class="col side-menu">
+            <div class="menu-title">
+                <a href="index.html"><img src="img/dashboard.png"/> &nbsp; 대시보드</a>
+            </div>
+            <div class="menu-title">
                 <img src="img/report.png"/> &nbsp; 사용현황
             </div>
-        </div>
-        <div class="row">
-            <div class="col side-menu">
-                <img src="img/review.png"/> &nbsp; 투자검토
+            <div class="menu-sub">
+                <div style="margin-left: 30px;"><a href="#">* 일별 사용현황</a></div>
+                <div style="margin-left: 30px; margin-top: 5px;"><a href="#">* 월별 사용현황</a></div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col side-menu">
-                <img src="img/setting.png"/> &nbsp; 환경설정
+            <div class="menu-title">
+                <a href="#"><img src="img/review.png"/> &nbsp; 투자검토</a>
             </div>
+            <div class="menu-title">
+                <a href="#"><img src="img/setting.png"/> &nbsp; 환경설정</a>
+            </div>
+
+            <script>
+                $(".menu-title").click(function() {
+                    $(this).next(".menu-sub").stop().slideToggle(280);
+                    $(this).toggleClass('on').siblings().removeClass('on');
+                    $(this).next(".menu-sub").siblings(".menu-sub").slideUp(300); // 1개씩 펼치기
+                });
+            </script>
         </div>
     </div>
 
     <!-- 메인 -->
-    <div class="col-10">
-        wfgsafasfasgas
+    <div class="col" style="margin-left: 200px;">
+        <div class="row">
+            <div class="col" id="chart-sub-1"></div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+            <div class="col bg-white shadow rounded-3" style="margin-left: 50px; height: 600px;">
+                <div id="grid-sub-1"></div>
+                <pre id="mr-aggregates"> --- </pre>
+                <button id="btn-csv-grid" class="btn btn-success">모든 셀 Excel</button>
+                <button id="btn-csv-sel" class="btn btn-success">선택 셀 Excel</button>
+            </div>
+            <div class="col right-side">
+                <div class="row">
+                    <div class="col bg-white shadow rounded-3" id="chart-sub-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col bg-white shadow rounded-3" id="chart-sub-3"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div></div>
 </body>
