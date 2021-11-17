@@ -10,14 +10,14 @@ document.readyState === 'complete' ? init() : window.onload = init;
 //
 function init() {
     let barchart = new chart.FlexChart('#chart-sub-3', {
-        header: 'Country GDP(B$)',
+        header: '사용 횟수 Top 5',
         legend: {
             position: chart.Position.Bottom
         },
         bindingX: 'country',
         series: [{
             binding: '2016',
-            name: '2016'
+            name: '사용 횟수'
         }],
         tooltip: {
             content: ''
@@ -26,8 +26,7 @@ function init() {
             content: '{y}'
         },
         itemsSource: getSubThirdData(),
-        palette: ['rgba(24,188,156,1)', 'rgba(52,152,219,1)', 'rgba(243,156,18,1)', 'rgba(108,193,190,1)', 'rgba(153,165,73,1)',
-            'rgba(143,84,181,1)', 'rgba(231,76,60,1)', 'rgba(138,152,153,1)', 'rgba(44,62,80,1)']
+        palette: ['#EC4176']
     });
     //
     let ani = new animation.ChartAnimation(barchart);

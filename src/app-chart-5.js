@@ -13,7 +13,7 @@ function init() {
         legend: {
             position: chart.Position.Bottom
         },
-        chartType: chart.ChartType.Line,
+        chartType: chart.ChartType.LineSymbols,
         bindingX: 'month',
         series: [{
                 binding: 'mean',

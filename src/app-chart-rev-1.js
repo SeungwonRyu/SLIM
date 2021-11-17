@@ -3,29 +3,30 @@ import '@grapecity/wijmo.styles/wijmo.css';
 import './styles.css';
 import * as chart from '@grapecity/wijmo.chart';
 import * as animation from '@grapecity/wijmo.chart.animation';
-import { getSubFirstData } from './data';
+import { getRevFirstData } from './data';
 //
 document.readyState === 'complete' ? init() : window.onload = init;
 //
 function init() {
-    let linechart = new chart.FlexChart('#chart-sub-1', {
+    let linechart = new chart.FlexChart('#chart-rev-1', {
         legend: {
-            position: chart.Position.None
+            position: chart.Position.Bottom
         },
-        chartType: chart.ChartType.Area,
-        bindingX: 'Date',
+        chartType: chart.ChartType.Line,
+        bindingX: 'month',
         series: [{
-            binding: 'MeanTemp'
+            binding: 'mean',
+            name: '내 자산'
+        }, {
+            binding: 'high',
+            name: '자산 평균'
         }],
         axisY: {
             minorGrid: false,
             majorGrid: false,
         },
-        axisX: {
-
-        },
-        itemsSource: getSubFirstData(),
-        palette: ['#394F6B']
+        itemsSource: getRevFirstData(),
+        palette: ['#AC124A', '#151755']
     });
     //
     let ani = new animation.ChartAnimation(linechart);

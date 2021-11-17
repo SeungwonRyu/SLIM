@@ -23,7 +23,7 @@ function init() {
             }
             // update the display using template literals
             let msg = (tally.cnt > 1)
-                ? glbz `Count: <b>${tally.cntAll}:n0</b>\tAverage: <b>${tally.avg}:g4\tSum: <b>${tally.sum}:g4</b>`
+                ? glbz `선택 셀: <b>${tally.cntAll}:n0</b>\t평균 값: <b>${tally.avg}:g4\t계: <b>${tally.sum}:g4</b>`
                 : (tally.cntAll > 1)
                     ? glbz `Count: <b>${tally.cntAll}:n0</b>`
                     : 'Ready';
@@ -77,16 +77,16 @@ function init() {
     // create some random data
     function getData() {
         var data = [];
-        var countries = 'Austria,Belgium,Chile,Denmark,Finland,Japan,UK'.split(',');
+        var countries = '3DCS,ABT,CCV,DMN,HD2,multi,Aerospace,Matlab,cadexchange,ccmsuite,comppower'.split(',');
         for (var i = 0; i < 300; i++) {
             data.push({
-                id: i,
-                from: countries[i % countries.length],
-                to: countries[(i + 1) % countries.length],
-                sales: Math.random() * 10000,
-                expenses: Math.random() * 5000,
-                amount: Math.random() * 10000,
-                extra: Math.random() * 10000,
+                '#': i+1,
+                features1: countries[i % countries.length],
+                features2: countries[(i + 1) % countries.length],
+                value1: Math.round(Math.random() * 10000),
+                value2: Math.round(Math.random() * 5000),
+                value3: Math.round(Math.random() * 10000),
+                value4: Math.round(Math.random() * 10000),
             });
         }
         return data;
