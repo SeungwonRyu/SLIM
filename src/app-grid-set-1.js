@@ -28,7 +28,16 @@ function init() {
             if (e.panel == s.topLeftCells) {
                 e.cell.innerHTML = '<span class="column-picker-icon glyphicon glyphicon-cog"></span>';
             }
-        }
+        },
+        columns: [
+            { binding: '#', header: '#', width: 60 },
+            { binding: '이름', header: '이름', width: 110 },
+            { binding: '부서', header: '부서', width: 110 },
+            { binding: 'ID', header: 'ID', width: 110 },
+            { binding: 'PW', header: 'PW', width: 110 },
+            { binding: 'Value1', header: 'Value1', width: 110 },
+            { binding: 'Value2', header: 'Value2', width: 110 }
+        ]
     });
     // create the column picker
     var theColumnPicker = new ListBox('#theColumnPicker', {
